@@ -11,9 +11,21 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
+const temaPersonalizado = {
+  dark: true,
+  colors: {
+    background: '#090F22',
+    'bg-navegacao': '#1C2541',
+    'icones-navegacao': '#3A506B'
+  }
+}
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
-    defaultTheme: 'dark',
+    defaultTheme: 'temaPersonalizado',
+    themes: {
+      temaPersonalizado
+    }
   },
 })
