@@ -1,7 +1,7 @@
 <template>
     <v-bottom-navigation
         bg-color="bg-navegacao"
-        color="teal-lighten-3">
+        color="amarelo-secundario">
         <v-btn>
             <v-icon>mdi-home-variant</v-icon>
 
