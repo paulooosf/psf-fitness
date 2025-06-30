@@ -16,7 +16,7 @@ const temaPersonalizado = {
   colors: {
     'background': '#202020',
     'bg-navegacao': '#333533',
-    'amarelo-primerio': '#FFD100',
+    'amarelo-primario': '#FFD100',
     'amarelo-secundario': '#FFEE32',
     'cinza-claro': '#D6D6D6',
   },
