@@ -2,7 +2,7 @@
     <v-bottom-navigation
         bg-color="bg-navegacao"
         color="amarelo-secundario">
-        <v-btn>
+        <v-btn to="/inicio">
             <v-icon>mdi-home-variant</v-icon>
 
             <span>Início</span>
@@ -14,7 +14,7 @@
             <span>Treinos</span>
         </v-btn>
 
-        <v-btn>
+        <v-btn to="/historico">
             <v-icon>mdi-history</v-icon>
 
             <span>Histórico</span>
