@@ -10,6 +10,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     BarraNavegacao: typeof import('./components/BarraNavegacao.vue')['default']
     CardExercicio: typeof import('./components/CardExercicio.vue')['default']
+    CardHistorico: typeof import('./components/CardHistorico.vue')['default']
+    CardTreino: typeof import('./components/CardTreino.vue')['default']
     HeaderPaginas: typeof import('./components/HeaderPaginas.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
