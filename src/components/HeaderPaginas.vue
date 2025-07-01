@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar flat color="background-secundario" scroll-behavior="hide" scroll-threshold="10">
+    <v-app-bar flat color="background" scroll-behavior="hide" scroll-threshold="10">
       <v-btn icon="mdi-arrow-left" variant="text" @click="voltar"></v-btn>
 
       <v-app-bar-title class="text-center">
