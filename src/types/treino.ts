@@ -1,4 +1,4 @@
-import type { Exercicio } from "./Exercicio";
+import type { Exercicio } from "./exercicio";
 
 export interface Treino {
     id: number,
