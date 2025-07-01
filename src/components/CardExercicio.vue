@@ -1,11 +1,4 @@
 <template>
-    <!-- <v-card
-        prepend-icon="mdi-dumbbell"
-        title="Treino 1"
-        subtitle="5 Exercícios"
-        link
-        color="amarelo-secundario"
-    ></v-card> -->
     <v-card
         class="mb-4"
         elevation="2"
@@ -17,7 +10,7 @@
                     <h1 class="text-2xl">
                         Supino Reto
                     </h1>
-                    <p class="text-md">(3x 12)</p>
+                    <p class="text-lg">3x 12</p>
                 </v-col>
                 <v-col cols="auto">
                     <v-checkbox hide-details density="compact"/>
