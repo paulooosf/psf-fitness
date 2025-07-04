@@ -2,6 +2,6 @@ export interface Exercicio {
     id: number,
     nome: string, 
     repeticoes: string,
-    carga: number,
+    carga?: number,
     observacao?: string
 }
