@@ -15,5 +15,5 @@ const props = defineProps<{
   Treino: Treino
 }>()
 
-const descricao = `${props.Treino.exercicios.length + 1} exercícios`
+const descricao = props.Treino.exercicios.length > 1 ? `${props.Treino.exercicios.length} exercícios` : '1 exercício'
 </script>
