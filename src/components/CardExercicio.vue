@@ -5,13 +5,16 @@
         color="amarelo-secundario"
     >
         <v-card-text>
-            <v-row align="center" justify="space-between">
-                <v-col cols="auto">
-                    <h1 class="text-xl font-bold leading-tight">Supino Reto</h1>
-                    <p class="text-base text-gray-700">3x 12</p>
+            <v-row no-gutters align="center" class="mb-2">
+                <v-col class="pr-2">
+                    <h1 class="text-xl font-bold leading-tight break-words">
+                    {{ Exercicio.nome }}
+                    </h1>
+                    <p class="text-base text-gray-700">{{ Exercicio.repeticoes }}</p>
                 </v-col>
-                <v-col cols="auto">
-                    <v-checkbox hide-details density="compact"/>
+
+                <v-col class="flex justify-end" cols="auto">
+                    <v-checkbox hide-details density="compact" />
                 </v-col>
             </v-row>
             <v-row dense class="mt-2">
@@ -22,12 +25,17 @@
                         hide-details
                         variant="underlined"
                         class="max-w-[120px]"
+                        v-model="Exercicio.carga"
                     />
                 </v-col>
-                <v-col cols="6" class="flex items-center">
-                    <v-chip color="bg-navegacao" prepend-icon="mdi-note" variant="flat" class="ml-auto">
-                        Isometria 3s
-                    </v-chip>
+                <v-col cols="6" class="flex items-center justify-end" v-if="Exercicio.observacao">
+                    <div
+                        class="flex items-start gap-1 text-sm text-white px-3 py-1 rounded-2xl max-w-full bg-gray-700"
+                        style="white-space: normal; word-break: break-word; line-height: 1.2;"
+                    >
+                        <v-icon icon="mdi-note" size="18" class="mt-[2px]" />
+                        <span>{{ Exercicio.observacao }}</span>
+                    </div>
                 </v-col>
             </v-row>
         </v-card-text>
@@ -35,5 +43,9 @@
 </template>
 
 <script setup lang="ts">
+import type { Exercicio } from '@/types/exercicio'
 
+const props = defineProps<{
+    Exercicio: Exercicio
+}>()
 </script>
