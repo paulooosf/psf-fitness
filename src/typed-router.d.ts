@@ -22,7 +22,7 @@ declare module 'vue-router/auto-routes' {
     '/CriarTreino': RouteRecordInfo<'/CriarTreino', '/CriarTreino', Record<never, never>, Record<never, never>>,
     '/Historico': RouteRecordInfo<'/Historico', '/Historico', Record<never, never>, Record<never, never>>,
     '/Inicio': RouteRecordInfo<'/Inicio', '/Inicio', Record<never, never>, Record<never, never>>,
-    '/Treino': RouteRecordInfo<'/Treino', '/Treino', Record<never, never>, Record<never, never>>,
+    '/Treino/[id]': RouteRecordInfo<'/Treino/[id]', '/Treino/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/Treinos': RouteRecordInfo<'/Treinos', '/Treinos', Record<never, never>, Record<never, never>>,
   }
 }
