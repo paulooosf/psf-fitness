@@ -1,6 +1,7 @@
 <template>
     <v-card
         class="mb-4"
+        :class="finalizado ? 'opacity-50' : ''"
         elevation="2"
         color="amarelo-secundario"
     >
@@ -14,10 +15,10 @@
                 </v-col>
 
                 <v-col class="flex justify-end" cols="auto">
-                    <v-checkbox hide-details density="compact" />
+                    <v-checkbox hide-details density="compact" v-model="finalizado"/>
                 </v-col>
             </v-row>
-            <v-row dense class="mt-2">
+            <v-row dense class="mt-2" v-if="!finalizado">
                 <v-col cols="6">
                     <v-text-field 
                         label="Carga (kg)" 
@@ -44,7 +45,9 @@
 
 <script setup lang="ts">
 import type { Exercicio } from '@/types/exercicio'
+import { ref } from 'vue'
 
+const finalizado = ref(false)
 const props = defineProps<{
     Exercicio: Exercicio
 }>()
