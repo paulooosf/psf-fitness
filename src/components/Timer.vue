@@ -15,13 +15,14 @@ import { computed, ref } from 'vue';
         return new Date(tempoEmSegundos.value * 1000).toISOString().substring(11, 19)
     })
 
-    const emit = defineEmits(['onFinalizarTimer'])
+    const emit = defineEmits(['onIniciarTimer', 'onFinalizarTimer'])
 
     function iniciarTimer() {
         timer.value = setInterval(() => {
             tempoEmSegundos.value += 1
         }, 1000)
         timerAtivo.value = true
+        emit('onIniciarTimer')
     }
 
     function finalizarTimer() {
