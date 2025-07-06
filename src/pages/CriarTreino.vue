@@ -65,10 +65,11 @@
                 </div>
             </div>
             <div class="fixed right-5 bottom-17">
-                <v-fab @click="salvarTreino()"
-                icon="mdi-content-save"
-                color="green"
-                ></v-fab>
+                <v-fab 
+                    @click="salvarTreino"
+                    icon="mdi-content-save"
+                    color="green"
+                />
             </div>
         </form>
     </body>
@@ -82,7 +83,7 @@ const nomeTreino = ref('')
 const exercicios = ref([
     { id: Date.now(), nome: '', repeticoes: '', observacao: '' }
 ])
-const {adicionarTreino } = useTreinos()
+const { adicionarTreino } = useTreinos()
 
 function adicionarExercicio() {
     exercicios.value.push({
