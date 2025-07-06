@@ -24,6 +24,9 @@ export function useTreinos() {
     atualizarTreino: (novoTreino: Treino) => {
       const index = treinos.value.findIndex((t: Treino) => t.id === novoTreino.id)
       if (index !== -1) treinos.value[index] = novoTreino
+    },
+    getTreinoPorId: (id: number) => {
+      return treinos.value.find((t: Treino) => t.id === id)
     }
   }
 }
