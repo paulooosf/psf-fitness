@@ -7,7 +7,7 @@
                 <v-icon icon="mdi-pencil" class="mr-2"/>
                 Editar Treino
             </v-btn>
-            <v-btn color="red" size="small">
+            <v-btn color="red" size="small" @click="mostrarModalExclusao = true">
                 <v-icon icon="mdi-delete" class="mr-2"/>
                 Excluir Treino
             </v-btn>
@@ -15,6 +15,21 @@
         <div v-for="exercicio in exercicios" :key="exercicio.id">
             <card-exercicio :Exercicio="exercicio" :TreinoIniciado="treinoIniciado"/>
         </div>
+        <v-dialog v-model="mostrarModalExclusao" width="400">
+            <v-card>
+                <v-card-title class="text-h6">Confirmar exclusão</v-card-title>
+                <v-card-text>Tem certeza que deseja excluir este treino?</v-card-text>
+                <v-card-actions>
+                    <v-spacer />
+                    <v-btn color="grey" variant="text" @click="mostrarModalExclusao = false">
+                        Cancelar
+                    </v-btn>
+                    <v-btn color="red" variant="elevated" @click="excluirTreino">
+                        Excluir
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </body>
 </template>
 
@@ -26,9 +41,10 @@ import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute('/Treino/[id]')
 const router = useRouter()
-const { getTreinoPorId } = useTreinos()
+const { getTreinoPorId, removerTreino } = useTreinos()
 const treinoIniciado = ref(false)
 const nomeTreino = ref('')
+const mostrarModalExclusao = ref(false)
 const exercicios = ref<Treino['exercicios']>([])
 const id = Number(route.params.id)
 
@@ -49,5 +65,11 @@ const stringHeader = computed(() => {
 
 function finalizarTreino(tempoDecorrido: string): void {
     treinoIniciado.value = false
+}
+
+function excluirTreino(): void {
+    removerTreino(id)
+    mostrarModalExclusao.value = false
+    router.push('/Treinos')
 }
 </script>
