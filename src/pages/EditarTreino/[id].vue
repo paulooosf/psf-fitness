@@ -72,6 +72,14 @@
                 />
             </div>
         </form>
+        <v-snackbar v-model="mostrarToast" color="red" timeout="2000">
+            {{ mensagemErro }}
+            <template #actions>
+                <v-btn icon @click="mostrarToast = false">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
+            </template>
+        </v-snackbar>
     </body>
 </template>
 
@@ -87,6 +95,8 @@ const { getTreinoPorId, atualizarTreino } = useTreinos()
 
 const nomeTreino = ref('')
 const exercicios = ref<Treino['exercicios']>([])
+const mensagemErro = ref('')
+const mostrarToast = ref(false)
 const id = Number(route.params.id)
 
 onMounted(() => {
@@ -120,12 +130,14 @@ function removerExercicio(index: number) {
 
 function salvarAlteracoes() {
     if (!nomeTreino.value.trim()) {
-        alert('Insira um nome válido.')
+        mensagemErro.value = 'Insira um nome válido.'
+        mostrarToast.value = true
         return
     }
 
     if (exercicios.value.some(e => !e.nome.trim() || !e.repeticoes.trim())) {
-        alert('Preencha todos os campos dos exercícios.')
+        mensagemErro.value = 'Preencha todos os campos dos exercícios.'
+        mostrarToast.value = true
         return
     }
 
@@ -135,7 +147,6 @@ function salvarAlteracoes() {
         exercicios: exercicios.value
     })
 
-    alert('Treino atualizado com sucesso!')
     router.push('/Treinos')
 }
 </script>

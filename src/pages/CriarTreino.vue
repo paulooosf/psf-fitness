@@ -72,6 +72,14 @@
                 />
             </div>
         </form>
+        <v-snackbar v-model="mostrarToast" color="red" timeout="2000">
+            {{ mensagemErro }}
+            <template #actions>
+                <v-btn icon @click="mostrarToast = false">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
+            </template>
+        </v-snackbar>
     </body>
 </template>
 
@@ -83,6 +91,8 @@ const nomeTreino = ref('')
 const exercicios = ref([
     { id: Date.now(), nome: '', repeticoes: '', observacao: '' }
 ])
+const mensagemErro = ref('')
+const mostrarToast = ref(false)
 const { adicionarTreino } = useTreinos()
 
 function adicionarExercicio() {
@@ -103,12 +113,14 @@ function removerExercicio(index: number) {
 
 function salvarTreino() {
     if (!nomeTreino.value.trim()) {
-        alert('Por favor, insira um nome para o treino.')
+        mostrarToast.value = true
+        mensagemErro.value = 'Por favor, insira um nome para o treino.'
         return
     }
 
     if (exercicios.value.some(ex => !ex.nome.trim() || !ex.repeticoes.trim())) {
-        alert('Por favor, preencha todos os campos dos exercícios.')
+        mostrarToast.value = true
+        mensagemErro.value = 'Por favor, preencha todos os campos dos exercícios.'
         return
     }
 
@@ -119,7 +131,6 @@ function salvarTreino() {
     }
 
     adicionarTreino(novoTreino)
-    alert('Treino salvo com sucesso!')
 }
 
 </script>
