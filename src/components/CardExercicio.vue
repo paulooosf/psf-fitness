@@ -24,6 +24,7 @@
                         label="Carga (kg)" 
                         density="compact"
                         hide-details
+                        readonly
                         variant="underlined"
                         class="max-w-[120px]"
                         v-model="Exercicio.carga"

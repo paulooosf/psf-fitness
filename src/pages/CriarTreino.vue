@@ -45,6 +45,12 @@
                                 v-model="exercicio.repeticoes"
                             />
                             <v-text-field
+                                label="Carga (kg)"
+                                variant="outlined"
+                                density="compact"
+                                v-model="exercicio.carga"
+                            />
+                            <v-text-field
                                 label="Observação (opcional)"
                                 variant="outlined"
                                 density="compact"
@@ -84,12 +90,13 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
 import { useTreinos } from '@/stores/useTreinos'
 import { ref } from 'vue'
 
 const nomeTreino = ref('')
 const exercicios = ref([
-    { id: Date.now(), nome: '', repeticoes: '', observacao: '' }
+    { id: Date.now(), nome: '', repeticoes: '', carga: 0, observacao: '' }
 ])
 const mensagemErro = ref('')
 const mostrarToast = ref(false)
@@ -100,6 +107,7 @@ function adicionarExercicio() {
         id: Date.now() + Math.random(),
         nome: '',
         repeticoes: '',
+        carga: 0,
         observacao: ''
     })
 }
@@ -131,6 +139,7 @@ function salvarTreino() {
     }
 
     adicionarTreino(novoTreino)
+    router.push('/Treinos')
 }
 
 </script>

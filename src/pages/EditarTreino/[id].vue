@@ -45,6 +45,12 @@
                                 v-model="exercicio.repeticoes"
                             />
                             <v-text-field
+                                label="Carga (kg)"
+                                variant="outlined"
+                                density="compact"
+                                v-model="exercicio.carga"
+                            />
+                            <v-text-field
                                 label="Observação (opcional)"
                                 variant="outlined"
                                 density="compact"
