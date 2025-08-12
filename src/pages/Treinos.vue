@@ -1,6 +1,6 @@
 <template>
     <header-paginas titulo="Meus Treinos"/>
-    <body class="flex flex-col w-full h-full mt-6 px-6 gap-6">
+    <body class="flex flex-col w-full h-full mt-6 px-6 gap-6 mb-6">
         <div v-for="treino in treinos" :key="treino.id">
             <card-treino :Treino="treino" :to="{ name: '/Treino/[id]', params: { id: treino.id } }"/>
         </div>
