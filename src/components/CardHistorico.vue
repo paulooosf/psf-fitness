@@ -1,21 +1,28 @@
 <template>
     <v-card
-        prepend-icon="mdi-dumbbell"
+        prepend-icon="mdi-history"
+        :title="RegistroTreino.nomeTreino"
+        :subtitle="dataFormatada"
         color="amarelo-secundario"
-    >
-        <template #title>
-            <div class="flex items-center w-full">
-                <span>Treino 1</span>
-                <v-spacer></v-spacer>
-                <span class="text-sm font-light">01/07/2024</span>
-            </div>
-        </template>
-
-        <v-card-subtitle class="mb-2">
-            Completo em 01:04:22
-        </v-card-subtitle>
-    </v-card>
+    ></v-card>
 </template>
 
 <script setup lang="ts">
+import type { RegistroTreino } from '@/types/registro-treino'
+import { computed } from 'vue'
+
+const props = defineProps<{
+    RegistroTreino: RegistroTreino
+}>()
+
+const dataFormatada = computed(() => {
+  const data = new Date(props.RegistroTreino.data)
+  return data.toLocaleString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
+})
 </script>
