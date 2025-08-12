@@ -24,10 +24,10 @@
                         label="Carga (kg)" 
                         density="compact"
                         hide-details
-                        readonly
                         variant="underlined"
                         class="max-w-[120px]"
                         v-model="Exercicio.carga"
+                        @change="emit('atualizarCarga')"
                     />
                 </v-col>
                 <v-col cols="6" class="flex items-center justify-end" v-if="Exercicio.observacao">
@@ -47,6 +47,7 @@
 <script setup lang="ts">
 import type { Exercicio } from '@/types/exercicio'
 import { ref } from 'vue'
+const emit = defineEmits(['atualizarCarga'])
 
 const exercicioFinalizado = ref(false)
 const props = defineProps<{

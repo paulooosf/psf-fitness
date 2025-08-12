@@ -13,7 +13,7 @@
             </v-btn>
         </div>
         <div v-for="exercicio in exercicios" :key="exercicio.id">
-            <card-exercicio :Exercicio="exercicio"/>
+            <card-exercicio :Exercicio="exercicio" @atualizarCarga="salvarCarga"/>
         </div>
         <v-dialog v-model="mostrarModalExclusao" width="400">
             <v-card>
@@ -42,7 +42,7 @@ import { useHistorico } from '@/stores/useHistorico'
 
 const route = useRoute('/Treino/[id]')
 const router = useRouter()
-const { getTreinoPorId, removerTreino } = useTreinos()
+const { getTreinoPorId, removerTreino, atualizarTreino } = useTreinos()
 const { registrar } = useHistorico()
 const nomeTreino = ref('')
 const mostrarModalExclusao = ref(false)
@@ -78,5 +78,13 @@ function excluirTreino(): void {
     removerTreino(id)
     mostrarModalExclusao.value = false
     router.push('/Treinos')
+}
+
+function salvarCarga(): void {
+    const treinoAtualizado = {
+        ...getTreinoPorId(id)!,
+        exercicios: exercicios.value
+    }
+    atualizarTreino(treinoAtualizado)
 }
 </script>
