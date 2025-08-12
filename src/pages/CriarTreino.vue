@@ -96,7 +96,7 @@ import { ref } from 'vue'
 
 const nomeTreino = ref('')
 const exercicios = ref([
-    { id: Date.now(), nome: '', repeticoes: '', carga: 0, observacao: '' }
+    { id: Date.now(), nome: '', repeticoes: '', carga: '', observacao: '' }
 ])
 const mensagemErro = ref('')
 const mostrarToast = ref(false)
@@ -107,7 +107,7 @@ function adicionarExercicio() {
         id: Date.now() + Math.random(),
         nome: '',
         repeticoes: '',
-        carga: 0,
+        carga: '',
         observacao: ''
     })
 }
