@@ -14,7 +14,7 @@
                     <p class="text-base text-gray-700">{{ Exercicio.repeticoes }}</p>
                 </v-col>
 
-                <v-col class="flex justify-end" cols="auto" v-if="TreinoIniciado">
+                <v-col class="flex justify-end" cols="auto">
                     <v-checkbox hide-details density="compact" v-model="exercicioFinalizado"/>
                 </v-col>
             </v-row>
@@ -51,6 +51,5 @@ import { ref } from 'vue'
 const exercicioFinalizado = ref(false)
 const props = defineProps<{
     Exercicio: Exercicio
-    TreinoIniciado: boolean
 }>()
 </script>

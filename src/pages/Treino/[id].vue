@@ -1,8 +1,8 @@
 <template>
     <header-paginas :titulo="stringHeader"/>
     <body class="flex flex-col w-full h-full mt-6 px-6 gap-6">
-        <timer @onIniciarTimer="treinoIniciado = true" @onFinalizarTimer="finalizarTreino"/>
-        <div class="flex flex-row justify-between" v-if="!treinoIniciado">
+        <v-btn @click="registrarTreino" color="green" v-if="!registrado">Registrar</v-btn>
+        <div class="flex flex-row justify-between">
             <v-btn color="amarelo-secundario" size="small" :to="{ name: '/EditarTreino/[id]', params: { id } }">
                 <v-icon icon="mdi-pencil" class="mr-2"/>
                 Editar Treino
@@ -13,7 +13,7 @@
             </v-btn>
         </div>
         <div v-for="exercicio in exercicios" :key="exercicio.id">
-            <card-exercicio :Exercicio="exercicio" :TreinoIniciado="treinoIniciado"/>
+            <card-exercicio :Exercicio="exercicio"/>
         </div>
         <v-dialog v-model="mostrarModalExclusao" width="400">
             <v-card>
@@ -38,13 +38,15 @@ import { useTreinos } from '@/stores/useTreinos'
 import type { Treino } from '@/types/treino'
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useHistorico } from '@/stores/useHistorico'
 
 const route = useRoute('/Treino/[id]')
 const router = useRouter()
 const { getTreinoPorId, removerTreino } = useTreinos()
-const treinoIniciado = ref(false)
+const { registrar } = useHistorico()
 const nomeTreino = ref('')
 const mostrarModalExclusao = ref(false)
+const registrado = ref(false)
 const exercicios = ref<Treino['exercicios']>([])
 const id = Number(route.params.id)
 
@@ -63,8 +65,13 @@ const stringHeader = computed(() => {
     return `Treino: ${nomeTreino.value || 'Carregando...'}`
 })
 
-function finalizarTreino(tempoDecorrido: string): void {
-    treinoIniciado.value = false
+function registrarTreino(): void {
+    registrar({
+        id: id,
+        nomeTreino: nomeTreino.value,
+        data: new Date()
+    })
+    registrado.value = true
 }
 
 function excluirTreino(): void {

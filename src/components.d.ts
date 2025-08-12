@@ -15,6 +15,5 @@ declare module 'vue' {
     HeaderPaginas: typeof import('./components/HeaderPaginas.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Timer: typeof import('./components/Timer.vue')['default']
   }
 }
