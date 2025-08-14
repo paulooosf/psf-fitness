@@ -49,8 +49,8 @@ export default defineConfig({
         name: 'PSF Fitness',
         short_name: 'PSF Fitness',
         description: 'Aplicativo de gerenciamento de treinos de musculação',
-        theme_color: '#1976D2',
-        background_color: '#ffffff',
+        theme_color: '#FFEE32',
+        background_color: '#333533',
         display: 'standalone',
         start_url: '/',
         icons: [
