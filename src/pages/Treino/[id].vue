@@ -1,6 +1,6 @@
 <template>
     <header-paginas :titulo="stringHeader"/>
-    <body class="flex flex-col w-full h-full mt-6 px-6 gap-6">
+    <body class="flex flex-col w-full h-full mt-6 px-6 gap-6 mb-6">
         <v-btn @click="registrarTreino" color="green" v-if="!registrado">Registrar</v-btn>
         <div class="flex flex-row justify-between">
             <v-btn color="amarelo-secundario" size="small" :to="{ name: '/EditarTreino/[id]', params: { id } }">

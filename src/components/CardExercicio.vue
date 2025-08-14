@@ -1,6 +1,5 @@
 <template>
     <v-card
-        class="mb-4"
         :class="exercicioFinalizado ? 'opacity-50' : ''"
         elevation="2"
         color="amarelo-secundario"
