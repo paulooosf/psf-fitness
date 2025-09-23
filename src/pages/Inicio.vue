@@ -9,7 +9,8 @@
                 Você ainda não registrou nenhum treino.
             </template>
         </h2>
-        <h2 class="text-2xl font-bold">O que vamos treinar hoje?</h2>
+        <h2 class="text-2xl font-bold" v-if="ultimoTreino">O que vamos treinar hoje?</h2>
+        <h2 class="text-2xl font-bold" v-else>Vamos começar hoje?</h2>
         <v-btn
             v-if="ultimoTreino && treinos.find(t => t.id === ultimoTreino!.id)"
             color="amarelo-secundario"
