@@ -24,7 +24,7 @@
                         density="compact"
                         hide-details
                         variant="underlined"
-                        class="max-w-[120px]"
+                        class="max-w-[90px]"
                         v-model="Exercicio.carga"
                         @change="emit('atualizarCarga')"
                     />
